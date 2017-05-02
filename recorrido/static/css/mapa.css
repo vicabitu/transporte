@@ -1,11 +1,13 @@
 body {
-    background-color: #464646;
+    background-color: #252830; /* gris */
 }
 
-
 .navbar-default {
-    background-color: #d62424;
-    border-color: #d62424;
+    background-color: #252830;
+    border-top-color: #252830;
+	border-right-color: #252830;
+	border-bottom-color: #8590ad;
+	border-left-color: #252830;
 }
 
 .navbar-header {
@@ -15,8 +17,20 @@ body {
     width: 100%;
 }
 
-.navbar-brand {
-    float:none;
+.navbar-brand {float:none;}
+.anim { display:none }
+
+.panel{
+	background-color: #252830;
+}
+
+label{
+    color: #fff;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #252830;
+    border-color: #fff;
 }
 
 #linea1{ color: blue;}
@@ -24,7 +38,6 @@ body {
 #linea3{ color: red;}
 #linea4{ color: #d2d210;}
 #linea5{ color: orange;}
-
 
 #referencia {
     font-family: Arial, sans-serif;

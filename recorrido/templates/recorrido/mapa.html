@@ -8,39 +8,7 @@
 {% endblock %}
 
 {% block contenido %}
-
-    <!---<div id="map"></div>
-    <div id="referencia">
-        <h3>Referencias</h3>
-    </div>-->
-
-    <!--<div class="container-fluid">
-
-        <div class="row">
-
-            <div class="col-sm-2">
-
-                <p>Primer columna</p>
-
-            </div>
-
-            <div class="col-sm-8">
-
-                <div class="embed-responsive embed-responsive-16by9" id="map"> </div>
-
-            </div>
-
-            <div class="col-sm-2">
-
-                <p>Tercer columna</p>
-
-            </div>
-        </div>
-
-    </div>-->
-
-
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default anim" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand">Transporte el 22</a>
         </div>
@@ -53,12 +21,12 @@
                     <div class="panel-body">
                         <form>
                             <div class="form-group">
-                                <label for="email">Ingrese su dirección de origen:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Origen">
+                                <label >Ingrese su dirección de origen:</label>
+                                <input class="form-control" id="email" placeholder="Origen">
                             </div>
                             <div class="form-group">
-                                <label for="pwd">Ingrese su dirección de destino:</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Destino">
+                                <label >Ingrese su dirección de destino:</label>
+                                <input class="form-control" id="pwd" placeholder="Destino">
                             </div>
                             <button type="submit" class="btn btn-default">Buscar Recorrido</button>
                         </form>
@@ -67,9 +35,6 @@
             </div>
             <div class="col-sm-8">
                 <div class="embed-responsive embed-responsive-16by9" id="map"></div>
-                <div id="referencia">
-                    <h3>Referencias</h3>
-                </div>
             </div>
             <div class="col-sm-2" name="panel">
                 <div class="panel panel-default">
@@ -110,103 +75,21 @@
             </div>
         </div>
     </div>
-
+{% endblock %}
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $( ".anim" ).fadeIn( "slow" );
+        });
+    </script>
     <script>
-
         var mapa;
         function iniciarMapa() {
           latitudYLongitud = {lat: -43.2489500, lng: -65.3050500}
           mapa = new google.maps.Map(document.getElementById('map'), {
             center: latitudYLongitud,
             zoom: 13
-          });
-
-          var posicionVentana =  new google.maps.LatLng(-43.244316, -65.330299);
-          var ventana  = new google.maps.InfoWindow({
-            content: 'Anduvo!!! :)',
-            position: posicionVentana
-          });
-
-          ventana.open(mapa)
-
-          var caracteristicasMarcadores = [
-            {
-              posicion: new google.maps.LatLng(-43.248631, -65.302863),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.265561, -65.2885601),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.253618, -65.305162),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.263706,-65.2911886),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.2556991,-65.3103032),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.2586294,-65.3297591),
-              tipo: 'informacion'
-            }, {
-              posicion: new google.maps.LatLng(-43.2560369,-65.3021484),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.2566632,-65.3184649),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.2668876,-65.2999589),
-              tipo: 'parada'
-            }, {
-              posicion: new google.maps.LatLng(-43.251281, -65.305540),
-              tipo: 'parada'
-            }
-          ]
-
-          /*Ver de agregar el tamanio a los iconos para que queden todos iguales o por si son muy grandes*/
-          var iconos = {
-            parada: {
-              nombre: 'Parada',
-              ruta: 'http://delhitravelhelp.in/favicon.ico'
-            },
-            venta: {
-              nombre: 'Buy Tickets',
-              ruta: 'http://3fram.es/favicon.ico'
-            },
-            informacion: {
-              nombre: 'Informacion',
-              ruta: 'https://u.jimcdn.com/e/o/s15c64d3cac1c1fc2/img/favicon.png?t=1427180532'
-            }
-          }
-
-          /*var infoImagen = {
-            url: 'http://delhitravelhelp.in/favicon.ico',
-
-            size: new google.maps.Size(45, 45),
-          };*/
-
-          var cordenadasRecorrido1 = [
-            {lat: -43.254280, lng: -65.304508},
-            {lat: -43.269459, lng: -65.283248},
-            {lat: -43.269526, lng: -65.283195},
-            {lat: -43.269638, lng: -65.283161},
-            {lat: -43.269765, lng: -65.283113},
-            {lat: -43.269980, lng: -65.283044},
-            {lat: -43.270011, lng: -65.283055},
-            {lat: -43.270220, lng: -65.283163},
-            {lat: -43.270263, lng: -65.283181},
-            {lat: -43.270303, lng: -65.283204},
-            {lat: -43.270437, lng: -65.283298},
-            {lat: -43.270524, lng: -65.283377}
-          ]
-
-          var recorrido1 = new google.maps.Polyline({
-            path: cordenadasRecorrido1,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 3,
-            map: mapa
           });
 
           var cordenadasRecorrido2 = [
@@ -220,41 +103,14 @@
           var recorrido2 = new google.maps.Polyline({
             path: cordenadasRecorrido2,
             geodesic: true,
-            strokeColor: '#23F20C',
-            strokeOpacity: 1.0,
+            strokeColor: 'blue',
+            strokeOpacity: 0.5,
             strokeWeight: 3,
             map: mapa
           });
-
-          agregarMarcadores(caracteristicasMarcadores);
-
-          function agregarMarcadores(caracteristicasMarcadores){
-
-            for(var i = 0; caracteristica = caracteristicasMarcadores[i]; i++) {
-              var marcador = new google.maps.Marker({
-                position: caracteristica.posicion,
-                icon: iconos[caracteristica.tipo].ruta,  //icon: {url: iconos[caracteristica.tipo].ruta, size: tamanio}
-                map: mapa
-              });
-            }
-          }
-
-          var referencias = document.getElementById('referencia');
-          for(var clave in iconos){
-            var icono = iconos[clave];
-            var nombre = icono.nombre;
-            var ruta = icono.ruta;
-            var div = document.createElement('div');
-            div.innerHTML = '<img src="' + ruta + '"> ' + nombre;
-            referencias.appendChild(div);
-          }
-
-          mapa.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(referencias);
         }
-
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAprEY2OWunYwfpusKXfNWJNBd07QJjRgQ&callback=iniciarMapa"
     async defer></script>
-
 {% endblock %}
