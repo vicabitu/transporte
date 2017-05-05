@@ -1,38 +1,44 @@
 from django.db import models
 
-class Parada(models.Model):
+class Coordenada(models.Model):
     """
-        Representa una parada de un recorrido.
+    Representa una coordenada en el mapa
     """
+
     latitud = models.DecimalField(max_digits=9, decimal_places=6)
     longitud = models.DecimalField(max_digits=9, decimal_places=6)
 
-class PuntoDeCarga(models.Model):
+
+class Mapa(models.Model):
     """
-        Puntos donde uno puede recargar su tarjeta Sube.
+    Representa el mapa de la ciudad en donde van a estar los dintintos recorridos y marcadores
     """
-    latitud = models.DecimalField(max_digits=9, decimal_places=6)
-    longitud = models.DecimalField(max_digits=9, decimal_places=6)
+
+    posicion_inicial = models.OneToOneField(Coordenada)
+    zoom = models.IntegerField()
+
+
+class Marcador(models.Model):
+    """
+    Represemta un marcador dentro del mapa, puede ser una parada de colectivo, un punto de venta,
+    lugar de informacion, etc
+    """
+
+    posicion = models.OneToOneField(Coordenada)
+    icono = models.CharField(max_length=100)
+    mapa = models.OneToOneField(Mapa, null=True)
+    tipo = models.CharField(max_length=30)
+
 
 class Recorrido(models.Model):
     """
-        Recorrido de una linea de la empresa.
+    Representa un recorrido en el mapa
     """
-    numero_linea = models.IntegerField()
+    nombre = models.CharField(max_length=10)
+    cordenada = models.ManyToManyField(Coordenada)
     color = models.CharField(max_length=10)
-    ruta = models.ManyToManyField(Parada)
-"""
-class Mapa(models.Model):
+    mapa = models.OneToOneField(Mapa, null=True)
+    ancho = models.IntegerField()
 
-    posicion_inicial = Coordenada
 
-    def __init__(self, posicion_inicial, zoom):
-        self.posicion_inicial = posicion_inicial
-        self.zoom = zoom
 
-class Marcador(models.Model):
-
-    def __init__(self, posicion, mapa):
-        self.posicion = posicion
-        self.mapa = mapa
-"""
