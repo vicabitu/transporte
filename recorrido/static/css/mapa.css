@@ -1,13 +1,20 @@
 body {
-    background-color: #252830; /* gris */
+    background-color: #252830;
+}
+
+#titulo {
+
+    color: white;
+
 }
 
 .navbar-default {
-    background-color: #252830;
-    border-top-color: #252830;
-	border-right-color: #252830;
-	border-bottom-color: #8590ad;
-	border-left-color: #252830;
+    background-color: #555;
+    border-top-color: #555;
+	border-right-color: #555;
+	border-bottom-color: #555; /*8590ad*/
+	border-left-color: #555;
+	border-radius: 0px;
 }
 
 .navbar-header {
@@ -21,7 +28,7 @@ body {
 .anim { display:none }
 
 .panel{
-	background-color: #252830;
+	background-color: #252830; /*252830 color que estaba antes, tambien en panel heading*/
 }
 
 label{
@@ -33,13 +40,13 @@ label{
     border-color: #fff;
 }
 
-#linea1{ color: blue;}
-#linea2{ color: green;}
-#linea3{ color: red;}
-#linea4{ color: #d2d210;}
-#linea5{ color: orange;}
+#linea1{ color: #fff;}  /*blue*/
+#linea2{ color: #fff;} /*green*/
+#linea3{ color: #fff;}   /*red*/
+#linea4{ color: #fff;}   /*d2d210*/
+#linea5{ color: #fff;}    /*orange*/
 
-#referencia {
+/*#referencia {
     font-family: Arial, sans-serif;
     background: #fff;
     padding: 10px;
@@ -53,4 +60,10 @@ label{
 
 #referencia img {
     vertical-align: middle;
+}*/
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
 }

@@ -1,5 +1,12 @@
 from django.shortcuts import render
+from recorrido.models import *
 
 def mostrar(request):
 
-    return render(request, 'recorrido/mapa.html', {})
+
+    contexto = {
+        "marcadores": Marcador.objects.all().first()
+    }
+    print(contexto)
+    return render(request, 'recorrido/mapa.html', contexto)
+
